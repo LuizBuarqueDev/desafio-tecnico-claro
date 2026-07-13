@@ -1,10 +1,7 @@
 package com.claro.desafio.pedidos.entities;
 
 import com.claro.desafio.pedidos.enums.OrderStatus;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,12 +15,17 @@ import java.time.Instant;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Order extends BaseEntity {
+
     @Column(nullable = false)
     private String displayName;
+
     @Column(nullable = false)
     private Long items;
+
     @Column(nullable = false, precision = 10, scale = 2)
     private Double peso;
+
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
     private Instant createAt;
@@ -34,6 +36,7 @@ public class Order extends BaseEntity {
         this.createAt = Instant.now();
         this.updateAt = Instant.now();
     }
+
     @PreUpdate
     private void preUpdate() {
         this.updateAt = Instant.now();
