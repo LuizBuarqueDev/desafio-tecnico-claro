@@ -1,0 +1,11 @@
+Swagger: utilizado para facilitar a documentação, utilização e testes dos endpoints da aplicação backend.
+
+Idioma: mesclei inglês e português para seguir exatamente as orientações do desafio. Caso contrário, manteria o padrão
+adotado no projeto, utilizando inglês em toda a aplicação, incluindo rotas, nomes de atributos e objetos, visando maior
+organização e padronização.
+
+BaseEntity: utilizada para centralizar atributos e comportamentos comuns das entidades. Essa abordagem facilita uma
+possível implementação de controllers e services genéricos, permitindo o tratamento das entidades de forma padronizada,
+incluindo operações baseadas em seus IDs, independentemente do tipo de entidade.
+
+todos
