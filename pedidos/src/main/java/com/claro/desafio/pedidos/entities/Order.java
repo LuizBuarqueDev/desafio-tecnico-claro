@@ -1,5 +1,6 @@
 package com.claro.desafio.pedidos.entities;
 
+import com.claro.desafio.pedidos.enums.OrderStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrePersist;
@@ -23,6 +24,7 @@ public class Order extends BaseEntity {
     private Long items;
     @Column(nullable = false, precision = 10, scale = 2)
     private Double peso;
+    private OrderStatus status;
 
     private Instant createAt;
     private Instant updateAt;

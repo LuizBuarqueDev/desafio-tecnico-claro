@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.management.relation.Role;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,4 +22,7 @@ public class AppUser extends BaseEntity{
 
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private Role role;
 }
