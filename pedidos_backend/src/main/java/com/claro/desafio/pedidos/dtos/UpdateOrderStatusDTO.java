@@ -1,11 +1,11 @@
 package com.claro.desafio.pedidos.dtos;
 
+import com.claro.desafio.pedidos.enums.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class LoginRequestDTO {
-    private String email;
-    private String password;
+public class UpdateOrderStatusDTO {
+    OrderStatus status;
 }
