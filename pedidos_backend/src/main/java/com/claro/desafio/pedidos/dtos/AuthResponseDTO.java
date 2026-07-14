@@ -1,8 +1,10 @@
 package com.claro.desafio.pedidos.dtos;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class LoginResponseDTO {
+@AllArgsConstructor
+public class AuthResponseDTO {
     private String token;
 }
