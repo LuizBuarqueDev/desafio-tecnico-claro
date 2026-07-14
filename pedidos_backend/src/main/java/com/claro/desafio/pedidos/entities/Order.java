@@ -14,6 +14,7 @@ import java.time.Instant;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "orders")
 public class Order extends BaseEntity {
 
     @Column(nullable = false)
@@ -22,7 +23,6 @@ public class Order extends BaseEntity {
     @Column(nullable = false)
     private Long items;
 
-    @Column(nullable = false, precision = 10, scale = 2)
     private Double peso;
 
     @Enumerated(EnumType.STRING)

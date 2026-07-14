@@ -6,13 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.management.relation.Role;
-
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
-@Table(name = "app_user")
+@Table(name = "app_users")
 public class AppUser extends BaseEntity{
 
     @Column(nullable = false, unique = true)
