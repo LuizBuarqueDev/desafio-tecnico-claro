@@ -1,9 +1,22 @@
 @use './base.scss';
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$red-palette,
+      ),
+      typography: Roboto,
+    )
+  );
+}
 
 .main-container {
   display: flex;
   flex-direction: column;
-  background-color: var(--light-2);
+  background-color: var(--light);
   padding: 30px;
   min-height: 100vh;
 }
