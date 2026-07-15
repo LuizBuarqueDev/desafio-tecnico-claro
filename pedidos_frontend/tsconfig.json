@@ -19,7 +19,8 @@
       "@app/*": ["app/*"],
       "@services/*": ["app/http/services/*"],
       "@models/*": ["app/shared/models/*"],
-      "@assets/*": ["assets/*"]
+      "@assets/*": ["assets/*"],
+      "@shared/*": ["app/shared/*"]
     }
   },
   "angularCompilerOptions": {

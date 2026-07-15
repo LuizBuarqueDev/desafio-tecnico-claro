@@ -7,19 +7,25 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/auth/auth.page').then((m) => m.AuthPage),
   },
   {
-    path: 'dashboard',
-    canActivate: [authGuard],
-    loadComponent: () => import('./pages/dashboard/dashboard.page').then((m) => m.DashboardPage),
-  },
-  {
-    path: 'orders',
-    canActivate: [authGuard],
-    loadComponent: () => import('./pages/orders/order.page').then((m) => m.OrderPage),
-  },
-  {
     path: '',
-    pathMatch: 'full',
-    redirectTo: 'dashboard',
+    canActivate: [authGuard],
+    loadComponent: () => import('@shared/layout/layout.component').then((m) => m.LayoutComponent),
+    children: [
+      {
+        path: 'dashboard',
+        loadComponent: () =>
+          import('./pages/dashboard/dashboard.page').then((m) => m.DashboardPage),
+      },
+      {
+        path: 'orders',
+        loadComponent: () => import('./pages/orders/order.page').then((m) => m.OrderPage),
+      },
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: '**',
