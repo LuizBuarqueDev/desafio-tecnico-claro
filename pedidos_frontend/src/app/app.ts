@@ -4,7 +4,7 @@ import { SidenavComponent } from './shared/components/sidenav/sidenav.component'
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SidenavComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

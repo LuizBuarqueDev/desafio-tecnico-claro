@@ -1,34 +1,41 @@
 <mat-drawer-container class="layout-container">
   <mat-drawer class="sidenav" mode="side" opened>
-    <div>
-      <div class="sidenav-header">
-        <mat-icon>box</mat-icon>
-        <h2>Pedidos</h2>
-        <h3>Manager</h3>
+    <div class="sidenav-content">
+      <div>
+        <div class="sidenav-header">
+          <mat-icon>box</mat-icon>
+          <h2>Pedidos</h2>
+          <h3>Manager</h3>
+        </div>
+
+        <nav class="menu">
+          <a
+            class="btn"
+            mat-button
+            routerLink="/dashboard"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <mat-icon>dashboard</mat-icon>
+            Dashboard
+          </a>
+
+          <a class="btn" mat-button routerLink="/orders" routerLinkActive="active">
+            <mat-icon>shopping_cart</mat-icon>
+            Pedidos
+          </a>
+
+          <a class="btn" mat-button routerLink="/orders/new" routerLinkActive="active">
+            <mat-icon>add</mat-icon>
+            Criar Pedido
+          </a>
+        </nav>
       </div>
 
-      <nav class="menu">
-        <a
-          class="btn"
-          mat-button
-          routerLink="/"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <mat-icon>dashboard</mat-icon>
-          Dashboard
-        </a>
-
-        <a class="btn" mat-button routerLink="/books" routerLinkActive="active">
-          <mat-icon>shopping_cart</mat-icon>
-          Pedidos
-        </a>
-
-        <a class="btn" mat-button routerLink="/library" routerLinkActive="active">
-          <mat-icon>add</mat-icon>
-          Criar Pedido
-        </a>
-      </nav>
+      <a class="btn logout-btn" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        Sair
+      </a>
     </div>
   </mat-drawer>
 
