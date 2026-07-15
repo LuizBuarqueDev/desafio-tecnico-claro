@@ -1,0 +1,48 @@
+<mat-drawer-container class="layout-container">
+  <mat-drawer class="sidenav" mode="side" opened>
+    <div>
+      <div class="sidenav-header">
+        <mat-icon>all_inbox</mat-icon>  
+        <h2>Pedidos</h2>
+        <h3>Manager</h3>
+      </div>
+
+      <nav class="menu">
+        <a
+          class="btn"
+          mat-button
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <mat-icon>dashboard</mat-icon>
+          Dashboard 1
+        </a>
+
+        <a
+          class="btn"
+          mat-button
+          routerLink="/books"
+          routerLinkActive="active"
+        >
+          <mat-icon>shopping_cart</mat-icon>
+          Pedidos
+        </a>
+
+        <a
+          class="btn"
+          mat-button
+          routerLink="/library"
+          routerLinkActive="active"
+        >
+          <mat-icon>add</mat-icon>
+          Criar Pedido
+        </a>
+      </nav>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <router-outlet />
+  </mat-drawer-content>
+</mat-drawer-container>
