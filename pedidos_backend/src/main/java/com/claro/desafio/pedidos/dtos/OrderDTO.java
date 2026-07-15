@@ -11,7 +11,7 @@ import java.util.UUID;
 public class OrderDTO {
     private UUID id;
     private String displayName;
-    private Long items;
+    private Long itens;
     private Double peso;
     private OrderStatus status;
 }

@@ -23,7 +23,7 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @PostMapping("/resgister")
+    @PostMapping("/register")
     @Operation(summary = "Register a new user")
     public ResponseEntity<AuthResponseDTO> register(@RequestBody @Valid RegisterRequestDTO request) {
         return ResponseEntity.ok(authService.register(request));

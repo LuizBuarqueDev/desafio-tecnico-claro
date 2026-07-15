@@ -25,7 +25,7 @@ public class OrderService {
 
     @Transactional
     public OrderDTO createOrder(OrderDTO orderDTO) {
-        if (orderDTO.getItems() > MAX_ITEMS) {
+        if (orderDTO.getItens() > MAX_ITEMS) {
             throw new IllegalArgumentException("Maximum number of items exceeded");
         }
 
