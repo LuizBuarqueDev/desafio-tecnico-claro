@@ -8,6 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
+import { AuthService } from '@services/auth.service';
+
 @Component({
   selector: 'app-auth',
   standalone: true,
@@ -23,19 +25,20 @@ import { MatButtonModule } from '@angular/material/button';
   ],
 })
 export class AuthPage {
-  private fb = inject(FormBuilder);
-  private router = inject(Router);
+  private readonly fb = inject(FormBuilder);
+  private readonly router = inject(Router);
+  private readonly authService = inject(AuthService);
 
   isLoginMode = true;
 
   loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: [''],
+    password: ['', Validators.required],
   });
 
   registerForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: [''],
+    password: ['', Validators.required],
   });
 
   toggleMode(): void {
@@ -50,13 +53,15 @@ export class AuthPage {
       return;
     }
 
-    const loginSuccess = true;
-
-    if (loginSuccess) {
-      this.router.navigate(['/dashboard']);
-    } else {
-      alert('Credenciais inválidas');
-    }
+    this.authService.loginRequest(this.loginForm.getRawValue()).subscribe({
+      next: (response) => {
+        this.authService.saveToken(response.token);
+        this.router.navigate(['/dashboard']);
+      },
+      error: () => {
+        alert('Credenciais inválidas');
+      },
+    });
   }
 
   onRegister(): void {
@@ -64,6 +69,14 @@ export class AuthPage {
       return;
     }
 
-    this.toggleMode();
+    this.authService.registerRequest(this.registerForm.getRawValue()).subscribe({
+      next: () => {
+        alert('Usuário cadastrado com sucesso!');
+        this.toggleMode();
+      },
+      error: () => {
+        alert('Erro ao cadastrar usuário.');
+      },
+    });
   }
 }
