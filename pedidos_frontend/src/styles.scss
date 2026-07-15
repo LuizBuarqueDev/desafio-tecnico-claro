@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@use './base.scss';
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--light-2);
+  padding: 30px;
+  min-height: 100vh;
+}

@@ -8,4 +8,4 @@ BaseEntity: utilizada para centralizar atributos e comportamentos comuns das ent
 possível implementação de controllers e services genéricos, permitindo o tratamento das entidades de forma padronizada,
 incluindo operações baseadas em seus IDs, independentemente do tipo de entidade.
 
-todos
+Separar Imple de auth de user ddos dados
