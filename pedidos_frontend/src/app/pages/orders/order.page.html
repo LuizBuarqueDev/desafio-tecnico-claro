@@ -1,3 +1,24 @@
 <div class="main-container">
-  <h1>Pedidos cadastrados</h1>
+  <div class="page-header">
+    <div>
+      <h1>Pedidos</h1>
+      <p>Gerencie todos os pedidos cadastrados</p>
+    </div>
+
+    <button
+      mat-raised-button
+      color="primary"
+      routerLink="/order-create"
+      [disabled]="orders().length >= 5"
+    >
+      <mat-icon>add</mat-icon>
+      Novo Pedido
+    </button>
+  </div>
+
+  <app-orders-grid
+    [orders]="orders()"
+    (statusChange)="onStatusChange($event)"
+    (deleteOrder)="onDelete($event)"
+  />
 </div>

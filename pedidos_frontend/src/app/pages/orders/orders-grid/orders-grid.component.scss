@@ -1,0 +1,133 @@
+.grid-container {
+  padding: 30px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.table-container {
+  background: var(--light);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--light-2);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: var(--light-2);
+
+  th {
+    text-align: left;
+
+    padding: 16px 20px;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray);
+  }
+}
+
+tbody {
+  tr {
+    border-top: 1px solid var(--light);
+
+    &:hover {
+      background: var(--light-2);
+    }
+  }
+
+  td {
+    padding: 18px 20px;
+
+    font-size: 14px;
+    color: var(--dark);
+  }
+}
+
+.customer {
+  display: flex;
+  flex-direction: column;
+
+  strong {
+    color: var(--dark);
+    font-size: 15px;
+  }
+
+  span {
+    color: var(--gray);
+    font-size: 12px;
+  }
+}
+
+.status {
+  padding: 5px 14px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  &.processando {
+    background: #dcfce7;
+    color: #16a34a;
+  }
+
+  &.pausado {
+    background: #fef9c3;
+    color: #ca8a04;
+  }
+
+  &.cancelado {
+    background: #fee2e2;
+    color: #dc2626;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+
+  button {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-icon {
+      font-size: 18px;
+    }
+  }
+
+  .play {
+    color: #22c55e;
+    border: 1px solid #22c55e;
+  }
+
+  .pause {
+    color: #f59e0b;
+    border: 1px solid #f59e0b;
+  }
+
+  .cancel {
+    color: #ef4444;
+    border: 1px solid #ef4444;
+  }
+
+  .delete {
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+  }
+}

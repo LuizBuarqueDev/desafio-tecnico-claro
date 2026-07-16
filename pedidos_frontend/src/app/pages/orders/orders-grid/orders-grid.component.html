@@ -1,0 +1,100 @@
+<div class="grid-container">
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>CLIENTE</th>
+          <th>ITENS</th>
+          <th>PESO</th>
+          <th>STATUS</th>
+          <th>AÇÕES</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (order of orders; track order.id) {
+          <tr>
+            <td>
+              <div class="customer">
+                <strong>{{ order.displayName }}</strong>
+                <span>Pedido #{{ $index + 1 }}</span>
+              </div>
+            </td>
+
+            <td>
+              {{ order.itens }}
+              {{ order.itens === 1 ? 'item' : 'itens' }}
+            </td>
+
+            <td>
+              {{ order.peso / 1000 | number: '1.2-2' }}
+              <small>kg</small>
+            </td>
+
+            <td>
+              <span
+                class="status"
+                [class.processando]="order.status === OrderStatus.EM_PROCESSAMENTO"
+                [class.pausado]="order.status === OrderStatus.PAUSADO"
+                [class.cancelado]="order.status === OrderStatus.CANCELADO"
+              >
+                {{ formatStatus(order.status) }}
+              </span>
+            </td>
+
+            <td>
+              <div class="actions">
+                @if (
+                  order.status === OrderStatus.PAUSADO || order.status === OrderStatus.CANCELADO
+                ) {
+                  <button
+                    mat-icon-button
+                    class="play"
+                    matTooltip="Processar"
+                    (click)="changeStatus(order, OrderStatus.EM_PROCESSAMENTO)"
+                  >
+                    <mat-icon>play_arrow</mat-icon>
+                  </button>
+                }
+
+                @if (order.status === OrderStatus.EM_PROCESSAMENTO) {
+                  <button
+                    mat-icon-button
+                    class="pause"
+                    matTooltip="Pausar"
+                    (click)="changeStatus(order, OrderStatus.PAUSADO)"
+                  >
+                    <mat-icon>pause</mat-icon>
+                  </button>
+                }
+
+                @if (
+                  order.status === OrderStatus.EM_PROCESSAMENTO ||
+                  order.status === OrderStatus.PAUSADO
+                ) {
+                  <button
+                    mat-icon-button
+                    class="cancel"
+                    matTooltip="Cancelar"
+                    (click)="changeStatus(order, OrderStatus.CANCELADO)"
+                  >
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                }
+
+                <button
+                  mat-icon-button
+                  class="delete"
+                  matTooltip="Excluir"
+                  (click)="confirmDelete(order)"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
