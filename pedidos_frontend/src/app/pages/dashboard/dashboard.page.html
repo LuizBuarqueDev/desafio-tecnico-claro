@@ -1,1 +1,33 @@
-<div class="main-container"></div>
+<section class="dashboard">
+  <header class="dashboard-header">
+    <h1>Dashboard</h1>
+
+    <p>Olá! Acompanhe os pedidos cadastrados, seus status e o uso do limite máximo permitido.</p>
+  </header>
+
+  @if (loading()) {
+    <div class="loading">
+      <mat-spinner diameter="36"></mat-spinner>
+      <span>Carregando dados...</span>
+    </div>
+  } @else if (hasError()) {
+    <div class="error-message">Não foi possível carregar os dados do dashboard.</div>
+  } @else {
+    <app-dashboard-cards
+      [totalOrders]="totalOrders()"
+      [processingOrders]="processingOrders()"
+      [totalItems]="totalItems()"
+      [totalWeightKg]="totalWeightKg()"
+    />
+
+    <div class="charts-grid">
+      <app-orders-bar-chart
+        [processingOrders]="processingOrders()"
+        [pausedOrders]="pausedOrders()"
+        [canceledOrders]="canceledOrders()"
+      />
+
+      <app-orders-limit-chart [totalOrders]="totalOrders()" [maximumOrders]="5" />
+    </div>
+  }
+</section>

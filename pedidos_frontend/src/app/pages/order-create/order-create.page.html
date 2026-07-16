@@ -1,6 +1,6 @@
 <div class="page">
   <header>
-    <button mat-button type="button" (click)="voltar()">←</button>
+    <button mat-button type="button" routerLink="/orders">←</button>
 
     <div>
       <h1>Cadastrar novo pedido</h1>
@@ -44,7 +44,7 @@
       }
 
       <div class="actions">
-        <button type="button" mat-stroked-button (click)="voltar()">Voltar</button>
+        <button type="button" mat-stroked-button routerLink="/orders">Voltar</button>
 
         <button type="button" mat-stroked-button (click)="form.reset()">Cancelar</button>
 

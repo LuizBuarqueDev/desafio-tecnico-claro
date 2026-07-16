@@ -7,13 +7,14 @@ import { Order } from '@app/shared/models/order.model';
 import { OrderService } from '@app/http/services/order.service';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-order',
   templateUrl: './order.page.html',
   styleUrls: ['./order.page.scss'],
   standalone: true,
-  imports: [OrdersGridComponent, MatSnackBarModule, MatIcon, MatButtonModule],
+  imports: [OrdersGridComponent, MatSnackBarModule, MatIcon, MatButtonModule, RouterLink],
 })
 export class OrderPage implements OnInit {
   private readonly orderService = inject(OrderService);

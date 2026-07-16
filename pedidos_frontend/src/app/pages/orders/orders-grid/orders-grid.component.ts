@@ -27,7 +27,6 @@ export interface OrderStatusChange {
     MatIconModule,
     MatDialogModule,
     MatTooltipModule,
-    RouterLink,
   ],
 })
 export class OrdersGridComponent {

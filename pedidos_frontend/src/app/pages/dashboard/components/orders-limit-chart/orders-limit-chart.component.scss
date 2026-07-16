@@ -1,0 +1,50 @@
+.chart-card {
+  height: 100%;
+  padding: 20px;
+  border: 1px solid var(--light);
+  border-radius: 8px;
+  background: var(--light-2);
+
+  h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  p {
+    margin: 6px 0 0;
+    color: var(--gray);
+  }
+}
+
+.chart {
+  position: relative;
+  height: 270px;
+  margin-top: 20px;
+}
+
+.chart-center {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+
+  strong {
+    font-size: 24px;
+  }
+
+  span {
+    color: var(--gray);
+  }
+}
+
+.limit-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--light);
+}

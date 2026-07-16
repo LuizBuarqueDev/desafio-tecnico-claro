@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
@@ -11,7 +11,7 @@ import { Order } from '@shared/models/order.model';
 @Component({
   selector: 'app-order-create',
   standalone: true,
-  imports: [ReactiveFormsModule, MatButtonModule, MatProgressSpinnerModule],
+  imports: [ReactiveFormsModule, MatButtonModule, MatProgressSpinnerModule, RouterLink],
   templateUrl: './order-create.page.html',
   styleUrls: ['./order-create.page.scss'],
 })
@@ -36,7 +36,9 @@ export class OrderCreatePage implements OnInit {
   }
 
   checkLimit(): void {
-    this.limitReached = !this.service.canCreate();
+    this.service.getAllWithFallback().subscribe((pedidos) => {
+      this.limitReached = pedidos.length >= 5;
+    });
   }
 
   salvar(): void {
@@ -74,9 +76,5 @@ export class OrderCreatePage implements OnInit {
           this.router.navigate(['/orders']);
         },
       });
-  }
-
-  voltar(): void {
-    this.router.navigate(['/orders']);
   }
 }
