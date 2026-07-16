@@ -21,6 +21,11 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/orders/order.page').then((m) => m.OrderPage),
       },
       {
+        path: 'order-create',
+        loadComponent: () =>
+          import('./pages/order-create/order-create.page').then((m) => m.OrderCreatePage),
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',

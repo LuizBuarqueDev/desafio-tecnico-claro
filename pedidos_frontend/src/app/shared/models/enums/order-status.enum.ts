@@ -1,5 +1,5 @@
 export enum OrderStatus {
-  EM_PROCESSAMENTO = 'Em Processamento',
-  ENTREGUE = 'Entregue',
-  CANCELADO = 'Cancelado',
+  EM_PROCESSAMENTO = 'EM_PROCESSAMENTO',
+  PAUSADO = 'PAUSADO',
+  CANCELADO = 'CANCELADO',
 }
