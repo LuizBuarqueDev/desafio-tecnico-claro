@@ -18,14 +18,14 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class OrderService {
 
-    private static final int MAX_ITEMS = 5;
+    private static final int MAX_ORDERS = 5;
 
     private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
 
     @Transactional
     public OrderDTO createOrder(OrderDTO orderDTO) {
-        if (orderDTO.getItens() > MAX_ITEMS) {
+        if (orderRepository.count() > MAX_ORDERS) {
             throw new IllegalArgumentException("Maximum number of items exceeded");
         }
 
