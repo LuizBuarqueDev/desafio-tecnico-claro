@@ -10,6 +10,39 @@ incluindo operações baseadas em seus IDs, independentemente do tipo de entidad
 
 Separação das responsabilidades de autenticação e gerenciamento de usuários, mantendo a lógica de autenticação separada do usaurio.
 
+Documentação e decisões técnicas
+
+Swagger: utilizado para facilitar a documentação, utilização e testes dos endpoints da aplicação backend, permitindo uma
+ visualização clara dos contratos da API e auxiliando no processo de validação das funcionalidades desenvolvidas.
+
+Idioma: mesclei inglês e português para seguir exatamente as orientações do desafio. 
+Em um projeto desenvolvido fora desse contexto, manteria um padrão único, utilizando inglês em toda a aplicação, 
+incluindo nomes de classes, atributos, objetos e rotas, visando maior organização, consistência e padronização do código.
+
+BaseEntity: utilizada para centralizar atributos e comportamentos comuns das entidades, como identificação e controle de informações 
+compartilhadas. Essa abordagem facilita uma possível implementação de componentes genéricos, permitindo a reutilização de 
+comportamentos e padronização das operações realizadas sobre diferentes entidades.
+
+Separação das responsabilidades de autenticação e usuários: a lógica de autenticação foi mantida separada do 
+gerenciamento de usuários, seguindo o princípio de responsabilidade única (SRP), permitindo maior organização, 
+manutenção e evolução do código.
+
+DTOs e Mappers: utilizados para evitar o acoplamento direto entre as entidades do banco de dados e os objetos 
+expostos pela API. Essa separação permite maior controle sobre os dados enviados e recebidos, além de facilitar 
+futuras alterações na estrutura interna da aplicação.
+
+Paginação e filtros: implementados utilizando recursos do Spring Data JPA, permitindo maior eficiência no 
+processamento das consultas e evitando carregamento desnecessário de grandes volumes de dados.
+
+Segurança: implementada utilizando Spring Security com autenticação baseada em JWT, garantindo controle de acesso aos 
+recursos protegidos da aplicação.
+
+Observabilidade: foram adicionados recursos de monitoramento utilizando Spring Actuator, Prometheus e Grafana, permitindo 
+acompanhar métricas da aplicação, disponibilidade dos serviços e indicadores importantes para análise operacional.
+
+Containerização: utilização de Docker e Docker Compose para facilitar a configuração e execução do ambiente completo da 
+aplicação, incluindo backend, frontend, banco de dados e ferramentas de monitoramento.
+
 Melhoria futuras:
 
 Implementar endpoints que retornem dados já consolidados para o dashboard, evitando que o frontend realize cálculos e 
