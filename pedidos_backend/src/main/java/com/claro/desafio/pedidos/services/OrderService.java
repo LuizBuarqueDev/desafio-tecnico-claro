@@ -3,6 +3,7 @@ package com.claro.desafio.pedidos.services;
 import com.claro.desafio.pedidos.dtos.OrderDTO;
 import com.claro.desafio.pedidos.entities.Order;
 import com.claro.desafio.pedidos.enums.OrderStatus;
+import com.claro.desafio.pedidos.exceptions.OrderNotFoundException;
 import com.claro.desafio.pedidos.mappers.OrderMapper;
 import com.claro.desafio.pedidos.repositories.OrderRepository;
 import jakarta.transaction.Transactional;
@@ -28,7 +29,7 @@ public class OrderService {
 
     @Transactional
     public OrderDTO createOrder(OrderDTO orderDTO) {
-        if (orderRepository.count() > MAX_ORDERS) {
+        if (orderRepository.count() >= MAX_ORDERS) {
             throw new IllegalArgumentException("Maximum number of items exceeded");
         }
 
@@ -44,7 +45,7 @@ public class OrderService {
     @Transactional
     public OrderDTO updateStatus(UUID id, OrderStatus newStatus) {
         Order order = orderRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Order not found"));
+                .orElseThrow(() -> new OrderNotFoundException("Order not found"));
 
         if (!order.getStatus().canTransitionTo(newStatus)) {
             throw new IllegalStateException("Invalid transition: " + order.getStatus() + " -> " + newStatus);
@@ -73,9 +74,6 @@ public class OrderService {
     @Transactional
     public void deleteOrder(UUID id) {
         Order order = orderRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Order not found."));
-        orderRepository.delete(order);
-
-        log.info("Order {} deleted.", id);
+                .orElseThrow(() -> new OrderNotFoundException("Order not found."));
     }
 }
