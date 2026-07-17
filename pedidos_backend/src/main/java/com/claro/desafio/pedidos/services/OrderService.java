@@ -8,6 +8,9 @@ import com.claro.desafio.pedidos.repositories.OrderRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -58,6 +61,13 @@ public class OrderService {
                 .stream()
                 .map(orderMapper::toDTO)
                 .toList();
+    }
+
+    public Page<OrderDTO> getOrders(String search, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return orderRepository
+                .findOrders(search, pageable)
+                .map(orderMapper::toDTO);
     }
 
     @Transactional
