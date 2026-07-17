@@ -1,0 +1,51 @@
+<div class="cards-grid">
+  <div class="summary-card">
+    <div class="card-icon">
+      <mat-icon>shopping_cart</mat-icon>
+    </div>
+
+    <div>
+      <span>Total de pedidos</span>
+      <strong>{{ totalOrders }}</strong>
+      <small>Limite máximo de 5</small>
+    </div>
+  </div>
+
+  <div class="summary-card">
+    <div class="card-icon">
+      <mat-icon>autorenew</mat-icon>
+    </div>
+
+    <div>
+      <span>Em processamento</span>
+      <strong>{{ processingOrders }}</strong>
+      <small>Pedidos em andamento</small>
+    </div>
+  </div>
+
+  <div class="summary-card">
+    <div class="card-icon">
+      <mat-icon>inventory_2</mat-icon>
+    </div>
+
+    <div>
+      <span>Total de itens</span>
+      <strong>{{ totalItems }}</strong>
+      <small>Itens cadastrados</small>
+    </div>
+  </div>
+
+  <div class="summary-card">
+    <div class="card-icon">
+      <mat-icon>scale</mat-icon>
+    </div>
+
+    <div>
+      <span>Peso total</span>
+
+      <strong> {{ totalWeightKg | number: '1.2-2' }} kg </strong>
+
+      <small>Soma de todos os pedidos</small>
+    </div>
+  </div>
+</div>

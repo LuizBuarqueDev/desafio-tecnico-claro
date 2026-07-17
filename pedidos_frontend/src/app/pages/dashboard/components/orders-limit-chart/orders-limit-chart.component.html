@@ -1,0 +1,20 @@
+<section class="chart-card">
+  <header>
+    <h2>Limite de pedidos</h2>
+    <p>Uso atual do limite máximo.</p>
+  </header>
+
+  <div class="chart">
+    <canvas baseChart type="doughnut" [data]="chartData" [options]="chartOptions"> </canvas>
+
+    <div class="chart-center">
+      <strong>{{ totalOrders }}/{{ maximumOrders }}</strong>
+      <span>{{ percentage }}%</span>
+    </div>
+  </div>
+
+  <div class="limit-info">
+    <span>Vagas disponíveis</span>
+    <strong>{{ availableOrders }}</strong>
+  </div>
+</section>

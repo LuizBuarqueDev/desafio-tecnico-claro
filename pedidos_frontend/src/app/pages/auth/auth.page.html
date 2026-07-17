@@ -1,0 +1,94 @@
+<div class="main-container">
+  <div class="auth-container">
+    <div class="auth-header">
+      <mat-icon>receipt_long</mat-icon>
+
+      <h1>Pedidos Manager</h1>
+      <p>Sistema de Gestão de Pedidos</p>
+    </div>
+
+    @if (isLoginMode) {
+      <p class="subtitle">Faça login para acessar o painel</p>
+
+      <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+
+          <input matInput type="email" placeholder="Digite seu email" formControlName="email" />
+
+          @if (loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')) {
+            <mat-error> O email é obrigatório. </mat-error>
+          }
+
+          @if (loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email')) {
+            <mat-error> Informe um email válido. </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+
+          <input
+            matInput
+            type="password"
+            placeholder="Digite sua senha"
+            formControlName="password"
+          />
+        </mat-form-field>
+
+        <button mat-raised-button class="btn-login" type="submit" [disabled]="loginForm.invalid">
+          Entrar
+        </button>
+
+        <p class="switch-mode">
+          Não possui conta?
+
+          <button mat-button type="button" (click)="toggleMode()">Criar conta</button>
+        </p>
+      </form>
+    } @else {
+      <h2>Criar conta</h2>
+
+      <p class="subtitle">Cadastre-se para acessar o sistema</p>
+
+      <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+
+          <input matInput type="email" placeholder="Digite seu email" formControlName="email" />
+
+          @if (
+            registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')
+          ) {
+            <mat-error> O email é obrigatório. </mat-error>
+          }
+
+          @if (registerForm.get('email')?.touched && registerForm.get('email')?.hasError('email')) {
+            <mat-error> Informe um email válido. </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+
+          <input
+            matInput
+            type="password"
+            placeholder="Digite sua senha"
+            formControlName="password"
+          />
+        </mat-form-field>
+
+        <button mat-raised-button class="btn-login" type="submit" [disabled]="registerForm.invalid">
+          Criar conta
+        </button>
+
+        <p class="switch-mode">
+          Já possui conta?
+
+          <button mat-button type="button" (click)="toggleMode()">Entrar</button>
+        </p>
+      </form>
+    }
+  </div>
+</div>

@@ -1,0 +1,5 @@
+export enum OrderStatus {
+  EM_PROCESSAMENTO = 'EM_PROCESSAMENTO',
+  PAUSADO = 'PAUSADO',
+  CANCELADO = 'CANCELADO',
+}

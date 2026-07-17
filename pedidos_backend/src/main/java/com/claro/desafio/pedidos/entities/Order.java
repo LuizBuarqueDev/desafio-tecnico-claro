@@ -21,7 +21,7 @@ public class Order extends BaseEntity {
     private String displayName;
 
     @Column(nullable = false)
-    private Long items;
+    private Long itens;
 
     private Double peso;
 

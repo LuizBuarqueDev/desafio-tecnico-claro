@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@use './base.scss';
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$red-palette,
+      ),
+      typography: Roboto,
+    )
+  );
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--light);
+  padding: 30px;
+  min-height: 100vh;
+}

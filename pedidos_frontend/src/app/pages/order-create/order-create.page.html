@@ -1,0 +1,61 @@
+<div class="page">
+  <header>
+    <button mat-button type="button" routerLink="/orders">←</button>
+
+    <div>
+      <h1>Cadastrar novo pedido</h1>
+
+      <p>Preencha os dados para cadastrar um novo pedido</p>
+    </div>
+  </header>
+
+  <section class="card">
+    <form [formGroup]="form" (ngSubmit)="salvar()">
+      <label> Cliente <span>*</span> </label>
+
+      <input type="text" placeholder="Nome do cliente" formControlName="cliente" />
+
+      @if (form.controls.cliente.touched && form.controls.cliente.hasError('required')) {
+        <small> O cliente é obrigatório </small>
+      }
+
+      @if (form.controls.cliente.hasError('minlength')) {
+        <small> O nome do cliente deve ter no mínimo 5 caracteres </small>
+      }
+
+      <label> Peso (gramas) <span>*</span> </label>
+
+      <input type="number" placeholder="Peso em gramas" formControlName="peso" />
+
+      @if (form.controls.peso.touched && form.controls.peso.invalid) {
+        <small> Informe um peso válido </small>
+      }
+
+      <label> Quantidade de itens <span>*</span> </label>
+
+      <input type="number" placeholder="Número de itens" formControlName="itens" />
+
+      @if (form.controls.itens.touched && form.controls.itens.invalid) {
+        <small> Informe uma quantidade válida de itens </small>
+      }
+
+      @if (limitReached) {
+        <div class="error">Limite máximo de 5 pedidos atingido.</div>
+      }
+
+      <div class="actions">
+        <button type="button" mat-stroked-button routerLink="/orders">Voltar</button>
+
+        <button type="button" mat-stroked-button (click)="form.reset()">Cancelar</button>
+
+        <button mat-flat-button type="submit" [disabled]="form.invalid || loading || limitReached">
+          @if (loading) {
+            <mat-spinner diameter="20"></mat-spinner>
+          } @else {
+            Cadastrar pedido
+          }
+        </button>
+      </div>
+    </form>
+  </section>
+</div>

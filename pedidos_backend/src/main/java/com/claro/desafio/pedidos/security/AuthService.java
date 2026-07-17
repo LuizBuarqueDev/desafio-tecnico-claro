@@ -4,6 +4,7 @@ import com.claro.desafio.pedidos.dtos.AuthResponseDTO;
 import com.claro.desafio.pedidos.dtos.LoginRequestDTO;
 import com.claro.desafio.pedidos.dtos.RegisterRequestDTO;
 import com.claro.desafio.pedidos.entities.AppUser;
+import com.claro.desafio.pedidos.exceptions.EmailAlreadyExistsException;
 import com.claro.desafio.pedidos.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,7 +23,7 @@ public class AuthService {
 
     public AuthResponseDTO register(RegisterRequestDTO request) {
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new IllegalArgumentException("Email already registered.");
+            throw new EmailAlreadyExistsException();
         }
 
         AppUser user = new AppUser();
