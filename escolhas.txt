@@ -47,3 +47,5 @@ Melhoria futuras:
 
 Implementar endpoints que retornem dados já consolidados para o dashboard, evitando que o frontend realize cálculos e 
 agregações, deixando a lógica de negócio centralizada no backend.
+
+Realizar testes completos em toda a aplicação, contemplando tanto o frontend quanto o backend, e não apenas os serviços principais da API.
