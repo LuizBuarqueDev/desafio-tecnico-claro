@@ -62,6 +62,7 @@ export class DashboardPage implements OnInit {
 
     this.orderService.getAllWithFallback().subscribe({
       next: (orders) => {
+        console.log('Pedidos carregados:', orders);
         this.orders.set(orders);
         this.loading.set(false);
       },

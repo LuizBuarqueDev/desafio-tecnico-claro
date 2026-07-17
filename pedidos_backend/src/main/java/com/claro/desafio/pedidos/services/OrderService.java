@@ -75,5 +75,7 @@ public class OrderService {
     public void deleteOrder(UUID id) {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new OrderNotFoundException("Order not found."));
+        orderRepository.delete(order);
+        log.info("Order {} deleted.", id);
     }
 }

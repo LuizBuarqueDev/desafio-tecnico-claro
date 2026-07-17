@@ -7,14 +7,18 @@ services:
       POSTGRES_DB: pedidos
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+
     ports:
       - "5432:5432"
+
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
 
   backend:
     build: .
     container_name: claro-backend
+
     depends_on:
       - postgres
 
@@ -25,6 +29,18 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/pedidos
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+
+
+  frontend:
+    build: ../pedidos_frontend
+    container_name: claro-frontend
+
+    depends_on:
+      - backend
+
+    ports:
+      - "4200:80"
+
 
   prometheus:
     image: prom/prometheus
@@ -39,6 +55,7 @@ services:
     depends_on:
       - backend
 
+
   grafana:
     image: grafana/grafana
     container_name: claro-grafana
@@ -46,8 +63,15 @@ services:
     ports:
       - "3000:3000"
 
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - ./grafana/provisioning:/etc/grafana/provisioning
+
     depends_on:
       - prometheus
 
+
 volumes:
   postgres_data:
+  grafana_data:
