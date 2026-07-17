@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { API_CONFIG } from '../api.config';
 import { Order } from '@shared/models/order.model';
 import { OrderStatus } from '@shared/models/enums/order-status.enum';
+import { Page } from '@app/shared/models/page.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,16 @@ export class OrderService {
 
   getAll(): Observable<Order[]> {
     return this.http.get<Order[]>(this.url);
+  }
+
+  getPage(page = 0, size = 10, search = '') {
+    return this.http.get<Page<Order>>(`${this.url}/page`, {
+      params: {
+        page,
+        size,
+        search,
+      },
+    });
   }
 
   create(order: Order): Observable<Order> {
